@@ -13,5 +13,10 @@ fi
 
 NIC="enp0s3"
 
-tc qdisc change dev $NIC root netem delay 0ms
-tc qdisc change dev $NIC root netem loss 0% 
+#tc qdisc change dev $NIC root netem delay 0ms
+#tc qdisc change dev $NIC root netem loss 0% 
+
+# correct way to remove all rules
+
+tc qdisc del dev $NIC root
+tc -s qdisc ls dev $NIC
